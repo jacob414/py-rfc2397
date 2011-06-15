@@ -1,11 +1,11 @@
 from setuptools import setup
 
 setup(name='rfc2397',
-      packages='rfc2397',
+      packages=('rfc2397',),
       version='1.0b1',
       author='Jacob Oscarson',
       author_email='jacob@plexical.com',
-      short_desc='A Python RFC2397 implementation',
+      description='A Python RFC2397 implementation',
       long_description=open('README.rst').read(),
       entry_points = { 'console_scripts': ('rfc2397 = rfc2397.main:cli') },
       classifiers = [
@@ -17,4 +17,4 @@ setup(name='rfc2397',
           'Topic :: Internet :: WWW/HTTP :: Site Management',
           'Topic :: Multimedia :: Graphics :: Graphics Conversion'
           ],
-      licence='MIT')
+      license='MIT')
