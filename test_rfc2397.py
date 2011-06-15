@@ -18,7 +18,7 @@ def test_succeed():
     assert data == 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAADElEQVQImWP4o8oAAANCASIYayeeAAAAAElFTkSuQmCC'
 
 def test_not_classifiable():
-    ec, data = dataurl('xxx')
+    ec, data = cli(('rfc', 'xxx'))
     assert ec == errno.EINVAL
     assert data == 'rfc2397: failed to determine file type'
 
