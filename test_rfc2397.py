@@ -10,6 +10,11 @@ __docformat__ = 'reStructuredText en'
 import sys
 import errno
 import subprocess
+import tempfile
+
+import py
+import pytest
+
 from rfc2397.main import dataurl, cli
 
 def test_succeed():
@@ -32,18 +37,24 @@ def test_empty_args():
     assert ec == errno.EINVAL
     assert data == 'rfc2397: syntax rfc2397 <asset path>'
 
-has_venv = subprocess.call(('virtualenv', '--version')) == 0
+def no_venv():
+    try:
+        return subprocess.call(('virtualenv', '--version')) != 0
+    except:
+        return True
 
+@pytest.mark.skipif("no_venv()")
 class TestPackagingIntegration(object):
 
     def setup_class(cls):
-        pass # XXX <---
+        cls.tmpdir = tempfile.mkdtemp()
 
     def teardown_class(cls):
         pass # XXX <---
 
     def test_sdist(self):
-        pass # XXX run `python setup.py sdist`, expect no errors, .tar.gz
+        rc = subprocess.call(('python', 'setup.py', 'sdist'))
+        assert rc == 0
 
     def test_installation(self):
         # XXX run `virtualenv `tmpdir``, run `pin install `.tgz from above`
