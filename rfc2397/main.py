@@ -38,7 +38,7 @@ def dataurl(path):
 
 def cli(args=sys.argv):
     if len(args) > 1:
-        return dataurl(args[0])
+        return dataurl(args[1])
     return errno.EINVAL, 'rfc2397: syntax rfc2397 <asset path>'
 
 if __name__ == '__main__':

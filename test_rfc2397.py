@@ -23,7 +23,7 @@ def test_not_classifiable():
     assert data == 'rfc2397: failed to determine file type'
 
 def test_file_not_found():
-    ec, data = dataurl('noexist.png')
+    ec, data = cli(('rfc', 'noexist.png'))
     assert ec == errno.ENOENT
     assert data[0:8] == 'rfc2397:'
 
