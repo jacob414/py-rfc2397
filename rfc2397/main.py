@@ -11,6 +11,7 @@ See README.rst.
 """
 __docformat__ = 'reStructuredText en'
 
+import os
 import sys
 import errno
 import base64
@@ -36,12 +37,16 @@ def dataurl(path):
     except IOError, e:
         return e.errno, 'rfc2397: %s' % e.strerror
 
-def cli(args=sys.argv):
+def cli(args=sys.argv, stdout=sys.stdout, stderr=sys.stderr):
     if len(args) > 1:
-        return dataurl(args[1])
-    return errno.EINVAL, 'rfc2397: syntax rfc2397 <asset path>'
+        rc, out = dataurl(args[1])
+        if rc == 0:
+            stdout.write(out + os.linesep)
+        else:
+            stderr.write(out + os.linesep)
+        return rc
+    stderr.write('rfc2397: syntax rfc2397 <asset path>' + os.linesep)
+    return errno.EINVAL
 
 if __name__ == '__main__':
-    ec, outp = cli()
-    print(outp)
-    sys.exit(ec)
+    sys.exit(cli())
