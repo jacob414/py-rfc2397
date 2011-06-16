@@ -1,8 +1,10 @@
 from setuptools import setup
 
-setup(name='rfc2397',
-      packages=('rfc2397',),
-      version='1.0b1',
+import rfc2397
+
+setup(name=rfc2397.name,
+      packages=(rfc2397.name,),
+      version=rfc2397.version,
       author='Jacob Oscarson',
       author_email='jacob@plexical.com',
       description='A Python RFC2397 implementation',
