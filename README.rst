@@ -34,3 +34,4 @@ file. For the moment it recognizes `.jpg`, `.gif` and `.png`::
 That's basically all there is to know about it.
 
 .. _pip: http://www.pip-installer.org/
+.. _PyPI: http://pypi.python.org/pypi
