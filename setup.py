@@ -9,7 +9,7 @@ setup(name=rfc2397.name,
       author_email='jacob@plexical.com',
       description='A Python RFC2397 implementation',
       long_description=open('README.rst').read(),
-      entry_points = { 'console_scripts': ('rfc2397 = rfc2397.main:cli') },
+      entry_points = { 'console_scripts': ('rfc2397 = rfc2397:cli') },
       classifiers = [
           'Development Status :: 4 - Beta',
           'License :: OSI Approved :: MIT License',
