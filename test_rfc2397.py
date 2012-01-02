@@ -48,32 +48,3 @@ def test_empty_args():
     ec = rfc2397.cli(('rfc',), stderr=err)
     assert ec == errno.EINVAL
     assert err.getvalue().startswith('rfc2397: syntax rfc2397 <asset path>')
-
-@pytest.mark.skipif("virtualenv is None")
-class TestPackagingIntegration(object):
-
-    def setup_class(cls):
-        cls.env = tempfile.mkdtemp()
-        virtualenv.create_environment(cls.env)
-
-    def teardown_class(cls):
-        shutil.rmtree(cls.env)
-
-    def env_path(self, *relpath):
-        return os.path.join(self.env, *relpath)
-
-    def test_sdist(self):
-        rc = subprocess.call(('python', 'setup.py', 'sdist'))
-        assert rc == 0
-
-    def test_installation(self):
-        rc = subprocess.call( (self.env_path('bin', 'pip'),
-                               'install',
-                               rfc2397.sdist()) )
-        assert rc == 0
-        proc = subprocess.Popen(self.env_path('bin', 'rfc2397'),
-                                stderr=subprocess.PIPE)
-        out, err = proc.communicate()
-        rc = proc.wait()
-        assert rc == errno.EINVAL
-        assert err.startswith('rfc2397: syntax rfc2397 <asset path>')
