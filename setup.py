@@ -3,7 +3,7 @@ from setuptools import setup
 import rfc2397
 
 setup(name=rfc2397.name,
-      packages=(rfc2397.name,),
+      py_modules=(rfc2397.name,),
       version=rfc2397.version,
       author='Jacob Oscarson',
       author_email='jacob@plexical.com',
