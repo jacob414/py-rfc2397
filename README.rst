@@ -30,13 +30,45 @@ install is via `pip`_::
     $ pip install rfc2397
 
 An executable named `rfc2397` is then placed in the python environment
-that `pip` installs to. Just give `rfc2397` a path to an image
-file. For the moment it recognizes `.jpg`, `.gif` and `.png`::
+that `pip` installs to.
+
+As an alternate method, it's also possible to copy the `rfc2397.py`_
+file to any location and run the script stand-alone.
+
+.. _`rfc2397.py`: https://github.com/JacobOscarson/py-rfc2397/blob/master/rfc2397.py
+
+Usage
+-----
+
+Just give `rfc2397` a path to an image file. `rfc2397` uses Python's
+mimetypes_ module to determine what MIME-type a file has (**N.B**:
+the program won't stop you from encoding something too large/an
+unsupported mime-type).
 
     $ rfc2397 dot.png # <- your image path
     data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAADElEQVQImWP4o8oAAANCASIYayeeAAAAAElFTkSuQmCC
 
-That's basically all there is to know about it.
-
 .. _pip: http://www.pip-installer.org/
 .. _PyPI: http://pypi.python.org/pypi
+
+Changes
+-------
+
+1.0b2 (2012-01-03)
+++++++++++++++++++
+
+* Uses mimetypes_ module instead of primitive ad-hoc file name
+  extension guessing.
+* `rfc2397` is now a single-file module, simplifies package and makes
+  it possible to just copy the `rfc2397.py`_ file to an arbitrary
+  location as an alternate installation method.
+* Better QA by using tox_.
+
+.. _mimetypes: http://docs.python.org/library/mimetypes.html
+.. _`rfc2397.py`: https://github.com/JacobOscarson/py-rfc2397/blob/master/rfc2397.py
+.. _tox: http://tox.testrun.org/
+
+1.0b1 (2011-06-16)
+++++++++++++++++++
+
+Concept and initial coding.
