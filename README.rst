@@ -16,6 +16,11 @@ The rationale behind this package is described in `this blogpost`_.
 .. _dataurl: http://pypi.python.org/pypi/dataurl
 .. _`this blogpost`: http://bit.ly/kwUnQL
 
+Requirements
+------------
+
+Python 2.6 and 2.7, not tested on Python 3+ (yet).
+
 Installation
 ------------
 
