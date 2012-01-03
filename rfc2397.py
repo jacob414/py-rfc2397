@@ -15,6 +15,7 @@ import os
 import sys
 import errno
 import base64
+import mimetypes
 
 name = 'rfc2397'
 version = '1.0b1'
@@ -25,19 +26,10 @@ sdist = lambda: os.path.abspath((os.path.join(
             'dist',
             '%s-%s.tar.gz' % (name, version))))
 
-ext_map = {
-    'png': 'image/png',
-    'jpg': 'image/jpeg',
-    'jpeg': 'image/jpeg',
-    'gif': 'image/gif',
-    # Add more if desired
-    }
-
 def dataurl(path):
-    ext = path.split('.')[-1]
-    try:
-        mime = ext_map[ext]
-    except KeyError:
+    mimetypes.init()
+    mime, enc = mimetypes.guess_type(os.path.join('file://', path))
+    if mime is None:
         return errno.EINVAL, 'rfc2397: failed to determine file type'
 
     try:
