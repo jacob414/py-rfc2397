@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 """
 =============================
 py-rfc2397, by Jacob Oscarson
