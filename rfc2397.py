@@ -19,7 +19,7 @@ import base64
 import mimetypes
 
 name = 'rfc2397'
-version = '1.0b1'
+version = '1.0b2'
 
 def dataurl(path):
     mimetypes.init()
